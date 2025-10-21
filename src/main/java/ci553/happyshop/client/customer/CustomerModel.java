@@ -41,7 +41,6 @@ public class CustomerModel {
 
         if(!productId.isEmpty() && !productDesc.isEmpty()){
             theProduct = databaseRW.searchByProductId(productId); //search database for id
-            theProduct = databaseRW.searchByProductDesc(productDesc); // search database for description
             if(theProduct != null && theProduct.getStockQuantity()>0){
                 double unitPrice = theProduct.getUnitPrice();
                 String description = theProduct.getProductDescription();
