@@ -101,7 +101,6 @@ public class SetDatabase {
                 "INSERT INTO ProductTable VALUES('0009', 'USB3 drive', 8.99, '0009.jpg',100)",
                 "INSERT INTO ProductTable VALUES('0010', 'USB4 drive', 9.99, '0010.jpg',100)",
                 "INSERT INTO ProductTable VALUES('0011', 'USB5 drive', 10.99, '0011.jpg',100)",
-                "INSERT INTO ProductTable VALUES('0012', 'USB6 drive', 10.99, '0011.jpg',100)",
         };
 
         try (Connection connection = DriverManager.getConnection(dbURL)) {

@@ -37,8 +37,11 @@ public class CustomerModel {
     //SELECT productID, description, image, unitPrice,inStock quantity
     void search() throws SQLException {
         String productId = cusView.tfId.getText().trim();
-        if(!productId.isEmpty()){
-            theProduct = databaseRW.searchByProductId(productId); //search database
+        String productDesc = cusView.tfName.getText().trim(); // adds the ability to search by name
+
+        if(!productId.isEmpty() && !productDesc.isEmpty()){
+            theProduct = databaseRW.searchByProductId(productId); //search database for id
+            theProduct = databaseRW.searchByProductDesc(productDesc); // search database for description
             if(theProduct != null && theProduct.getStockQuantity()>0){
                 double unitPrice = theProduct.getUnitPrice();
                 String description = theProduct.getProductDescription();
@@ -56,8 +59,8 @@ public class CustomerModel {
             }
         }else{
             theProduct=null;
-            displayLaSearchResult = "Please type ProductID";
-            System.out.println("Please type ProductID.");
+            displayLaSearchResult = "Please type in an ID or Name";
+            System.out.println("Please type in an ID or Name.");
         }
         updateView();
     }
