@@ -208,6 +208,7 @@ public class CustomerModel {
 
     //for test only
     public ArrayList<Product> getTrolley() {
+        //This should be removed in future
         return trolley;
     }
 }
