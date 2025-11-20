@@ -105,7 +105,7 @@ public class CustomerModel {
         }
         Product newProduct = new Product(theProduct.getProductId(), theProduct.getProductDescription(), theProduct.getProductImageName(), theProduct.getUnitPrice(), theProduct.getStockQuantity());
         trolley.add(newProduct);
-        trollet.sort(Comparator.comparing(Product::getProductId));
+        trolley.sort(Comparator.comparing(Product::getProductId));
     }
 
     void checkOut() throws IOException, SQLException {
