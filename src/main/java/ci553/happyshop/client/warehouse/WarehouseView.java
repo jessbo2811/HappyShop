@@ -229,7 +229,7 @@ public class WarehouseView  {
                         ivPro = new ImageView(new Image(imageFullUri, 50,45, true,true)); // Attempt to load the product image
                     } catch (Exception e) {
                         // If loading fails, use a default image directly from the resources folder
-                        ivPro = new ImageView(new Image("imageHolder.jpg",50,45,true,true)); // Directly load from resources
+                        ivPro = new ImageView(new Image("party-bell.jpg",50,45,true,true)); // Directly load from resources
                     }
 
                     Label laProToString = new Label(product.toString()); // Create a label for product details
@@ -541,7 +541,7 @@ public class WarehouseView  {
             ivProEdit.setImage(new Image(imageUrl));  // Attempt to load the product image
         } catch (Exception e) {
             // If loading fails, use a default image directly from the resources folder
-            ivProEdit.setImage(new Image("imageHolder.jpg"));
+            ivProEdit.setImage(new Image("party-bell.jpg"));
         }
     }
 

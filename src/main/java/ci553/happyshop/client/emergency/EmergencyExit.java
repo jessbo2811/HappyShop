@@ -28,7 +28,7 @@ public class EmergencyExit {
     //Private constructor creates a shutdown window.
     //The window displays a single button with a shutdown image,positioned via `WinPosManager`,
     private EmergencyExit() {
-        ImageView ivExit = new ImageView("ShutDown.jpg");
+        ImageView ivExit = new ImageView("log-out.jpg");
         ivExit.setFitWidth(WIDTH-100);
         ivExit.setFitHeight(WIDTH-100);
         ivExit.setPreserveRatio(true);
