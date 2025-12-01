@@ -62,7 +62,7 @@ public class CustomerView  {
         // Create a divider line
         Line line = new Line(0, 0, 0, HEIGHT);
         line.setStrokeWidth(4);
-        line.setStroke(Color.PINK);
+        line.setStroke(Color.LIGHTSKYBLUE);
         VBox lineContainer = new VBox(line);
         lineContainer.setPrefWidth(4); // Give it some space
         lineContainer.setAlignment(Pos.CENTER);
@@ -83,7 +83,7 @@ public class CustomerView  {
         Label laPageTitle = new Label("Search by Product ID/Name");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
 
-        Label laId = new Label("ID:      ");
+        Label laId = new Label("ID:");
         laId.setStyle(UIStyle.labelStyle);
         tfId = new TextField();
         tfId.setPromptText("eg. 0001");
@@ -99,10 +99,10 @@ public class CustomerView  {
 
         Label laPlaceHolder = new Label(  " ".repeat(15)); //create left-side spacing so that this HBox aligns with others in the layout.
         Button btnSearch = new Button("Search");
-        btnSearch.setStyle(UIStyle.buttonStyle);
+        btnSearch.setStyle(UIStyle.blueBtnStyle);
         btnSearch.setOnAction(this::buttonClicked);
         Button btnAddToTrolley = new Button("Add to Trolley");
-        btnAddToTrolley.setStyle(UIStyle.buttonStyle);
+        btnAddToTrolley.setStyle(UIStyle.blueBtnStyle);
         btnAddToTrolley.setOnAction(this::buttonClicked);
         HBox hbBtns = new HBox(10, laPlaceHolder,btnSearch, btnAddToTrolley);
 
@@ -112,7 +112,7 @@ public class CustomerView  {
         ivProduct.setPreserveRatio(true); // Image keeps its original shape and fits inside 60×60
         ivProduct.setSmooth(true); //make it smooth and nice-looking
 
-        lbProductInfo = new Label("Thank you for shopping with us.");
+        lbProductInfo = new Label("Thank you for using Happy Shop!");
         lbProductInfo.setWrapText(true);
         lbProductInfo.setMinHeight(Label.USE_PREF_SIZE);  // Allow auto-resize
         lbProductInfo.setStyle(UIStyle.labelMulLineStyle);
@@ -137,11 +137,11 @@ public class CustomerView  {
 
         Button btnCancel = new Button("Cancel");
         btnCancel.setOnAction(this::buttonClicked);
-        btnCancel.setStyle(UIStyle.buttonStyle);
+        btnCancel.setStyle(UIStyle.blueBtnStyle);
 
         Button btnCheckout = new Button("Check Out");
         btnCheckout.setOnAction(this::buttonClicked);
-        btnCheckout.setStyle(UIStyle.buttonStyle);
+        btnCheckout.setStyle(UIStyle.blueBtnStyle);
 
         HBox hbBtns = new HBox(10, btnCancel,btnCheckout);
         hbBtns.setStyle("-fx-padding: 15px;");
@@ -170,7 +170,7 @@ public class CustomerView  {
         vbReceiptPage = new VBox(15, laPageTitle, taReceipt, btnCloseReceipt);
         vbReceiptPage.setPrefWidth(COLUMN_WIDTH);
         vbReceiptPage.setAlignment(Pos.TOP_CENTER);
-        vbReceiptPage.setStyle(UIStyle.rootStyleYellow);
+        vbReceiptPage.setStyle(UIStyle.processingWindowStyle);
         return vbReceiptPage;
     }
 

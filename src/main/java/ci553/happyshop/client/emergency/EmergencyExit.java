@@ -34,6 +34,7 @@ public class EmergencyExit {
         ivExit.setPreserveRatio(true);
 
         Button btnExit = new Button();
+        btnExit.setStyle(UIStyle.btnStyle);
         btnExit.setGraphic(ivExit);
         btnExit.setOnAction(event -> {
             Platform.exit(); // Gracefully exit JavaFX
@@ -43,11 +44,11 @@ public class EmergencyExit {
         BorderPane borderPane = new BorderPane();
         borderPane.setCenter(btnExit);
 
-        borderPane.setStyle(UIStyle.rootStyle);
+        borderPane.setStyle(UIStyle.emergencyExitStyle);
         Scene scene = new Scene(borderPane, WIDTH, HEIGHT);
         Stage window = new Stage();
         window.setScene(scene);
-        window.setTitle("🛒 EXIT");
+        window.setTitle("EXIT");
         WinPosManager.registerWindow(window,WIDTH,HEIGHT); //calculate position x and y for this window
         window.show();
     }

@@ -1,15 +1,17 @@
 package ci553.happyshop.client.picker;
 
+import java.io.IOException;
+
 import ci553.happyshop.utility.UIStyle;
 import ci553.happyshop.utility.WinPosManager;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-import java.io.IOException;
 
 /**
  * The Order Picker window is for staff to prepare customer's order.
@@ -70,11 +72,11 @@ public class PickerView  {
 
         Button btnProgressing = new Button("Progressing");
         btnProgressing.setOnAction(this::buttonClicked);
-        btnProgressing.setStyle(UIStyle.buttonStyle);
+        btnProgressing.setStyle(UIStyle.purpleBtnStyle);
 
         VBox vbOrdersListRoot = new VBox(15, laOrderMapRootTitle, taOrderMap, btnProgressing);
         vbOrdersListRoot.setAlignment(Pos.TOP_CENTER);
-        vbOrdersListRoot.setStyle(UIStyle.rootStyleYellow);
+        vbOrdersListRoot.setStyle(UIStyle.rootStyle);
 
         return vbOrdersListRoot;
     }

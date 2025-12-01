@@ -1,5 +1,12 @@
 package ci553.happyshop.client.warehouse;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import ci553.happyshop.catalogue.Product;
 import ci553.happyshop.utility.StorageLocation;
 import ci553.happyshop.utility.UIStyle;
@@ -8,26 +15,25 @@ import ci553.happyshop.utility.WindowBounds;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import javafx.geometry.Insets;
-import javafx.scene.input.MouseEvent;
 /**
  * Some emojis used in the UI. If the emoji does not work on your OS,
  * please change them to their unique Unicode codes.
@@ -137,7 +143,7 @@ public class WarehouseView  {
         // Divider line between SearchPage and ProductFormPage
         Line line = new Line(0, 0, 0, HEIGHT);
         line.setStrokeWidth(4);
-        line.setStroke(Color.LIGHTGREEN);
+        line.setStroke(Color.LIGHTSKYBLUE);
         VBox lineContainer = new VBox(line);
         lineContainer.setPrefWidth(4);
         lineContainer.setAlignment(Pos.CENTER);
@@ -180,11 +186,11 @@ public class WarehouseView  {
         laSearchSummary = new Label("Search Summary");
         laSearchSummary.setStyle(UIStyle.labelStyle);
         Button btnEdit = new Button("Edit");
-        btnEdit.setStyle(UIStyle.greenFillBtnStyle);
+        btnEdit.setStyle(UIStyle.blueBtnStyle);
         btnEdit.setOnAction(this::buttonClick);
 
         Button btnDelete = new Button("Delete");
-        btnDelete.setStyle(UIStyle.grayFillBtnStyle);
+        btnDelete.setStyle(UIStyle.blueBtnStyle);
         btnDelete.setOnAction(this::buttonClick);
 
         HBox hbLaBtns = new HBox(10, laSearchSummary, btnEdit,btnDelete);
@@ -288,7 +294,7 @@ public class WarehouseView  {
 
     private VBox createEditProdcutChild() {
         //HBox for Id Label and TextField
-        Label laId = new Label("ID"+" ".repeat(8));
+        Label laId = new Label("ID:");
         laId.setStyle(UIStyle.labelStyle);
         tfIdEdit = new TextField();
         tfIdEdit.setEditable(false);
@@ -297,7 +303,7 @@ public class WarehouseView  {
         hbId.setAlignment(Pos.CENTER_LEFT);
 
         // HBox for Price Label and TextField
-        Label laPrice = new Label("Price_£");
+        Label laPrice = new Label("Price:");
         laPrice.setStyle(UIStyle.labelStyle);
         tfPriceEdit = new TextField();
         tfPriceEdit.setStyle("-fx-font-size: 14px; -fx-pref-width: 100px;");
@@ -322,7 +328,7 @@ public class WarehouseView  {
         hbIdPriceImage.setAlignment(Pos.CENTER_LEFT);
 
         // Editing stock
-        Label laStock = new Label("Stock"+" ".repeat(3));
+        Label laStock = new Label("Stock:");
         laStock.setStyle(UIStyle.labelStyle);
 
         // TextField current stock
@@ -337,7 +343,7 @@ public class WarehouseView  {
 
         // Add and Subtract Buttons for changing stock
         btnAdd = new Button("➕");
-        btnAdd.setStyle(UIStyle.greenFillBtnStyle);
+        btnAdd.setStyle(UIStyle.plusFillBtnStyle);
         btnAdd.setPrefWidth(35);
         btnAdd.setOnAction(this::buttonClick);
 
@@ -362,12 +368,12 @@ public class WarehouseView  {
 
         // OK & Clear Buttons
         btnCancelEdit = new Button("Cancel");
-        btnCancelEdit.setStyle(UIStyle.grayFillBtnStyle);
+        btnCancelEdit.setStyle(UIStyle.purpleBtnStyle);
         btnCancelEdit.setPrefWidth(100);
         btnCancelEdit.setOnAction(this::buttonClick);
 
         btnSubmitEdit = new Button("Submit");
-        btnSubmitEdit.setStyle(UIStyle.blueFillBtnStyle);
+        btnSubmitEdit.setStyle(UIStyle.purpleBtnStyle);
         btnSubmitEdit.setPrefWidth(100);
         btnSubmitEdit.setOnAction(this::buttonClick);
 
@@ -385,7 +391,7 @@ public class WarehouseView  {
 
     private VBox createNewProductChild() {
         //HBox for Id Label and TextField
-        Label laId = new Label("ID"+ " ".repeat(9));
+        Label laId = new Label("ID:");
         laId.setStyle(UIStyle.labelStyle);
         tfIdNewPro = new TextField();
         tfIdNewPro.setStyle("-fx-font-size: 14px; -fx-pref-width: 100px;");
@@ -393,7 +399,7 @@ public class WarehouseView  {
         hbId.setAlignment(Pos.CENTER_LEFT);
 
         // HBox for Price Label and TextField
-        Label laPrice = new Label("Price_£ ");
+        Label laPrice = new Label("Price:");
         laPrice.setStyle(UIStyle.labelStyle);
         tfPriceNewPro = new TextField();
         tfPriceNewPro.setStyle("-fx-font-size: 14px; -fx-pref-width: 100px;");
@@ -401,7 +407,7 @@ public class WarehouseView  {
         hbPrice.setAlignment(Pos.CENTER_LEFT);
 
         //  HBox for stock label and textFiled
-        Label laStock = new Label("Stock" +" ".repeat(4));
+        Label laStock = new Label("Stock:");
         laStock.setStyle(UIStyle.labelStyle);
         tfStockNewPro = new TextField();
         tfStockNewPro.setStyle("-fx-font-size: 14px; -fx-pref-width: 100px;");
@@ -436,12 +442,12 @@ public class WarehouseView  {
 
         // OK & Cancel Buttons
         Button btnClear = new Button("Cancel");
-        btnClear.setStyle(UIStyle.grayFillBtnStyle);
+        btnClear.setStyle(UIStyle.purpleBtnStyle);
         btnClear.setPrefWidth(100);
         btnClear.setOnAction(this::buttonClick);
 
         Button btnAddNewPro = new Button("Submit");
-        btnAddNewPro.setStyle(UIStyle.blueFillBtnStyle);
+        btnAddNewPro.setStyle(UIStyle.purpleBtnStyle);
         btnAddNewPro.setPrefWidth(100);
         btnAddNewPro.setOnAction(this::buttonClick);
         // HBox for OK & clear Buttons

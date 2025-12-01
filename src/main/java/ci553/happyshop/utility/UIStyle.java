@@ -52,16 +52,16 @@ public final class UIStyle {
     public static final int HistoryWinWidth = 300;
     public static final int HistoryWinHeight = 140;
 
-    public static final int EmergencyExitWinWidth = 200;
-    public static final int EmergencyExitWinHeight = 300;
+    public static final int EmergencyExitWinWidth = 175;
+    public static final int EmergencyExitWinHeight = 175;
 
     public static final String labelTitleStyle = "-fx-font-weight: bold; " +
-            "-fx-font-size: 16px; -fx-text-fill: purple;";
+            "-fx-font-size: 16px; -fx-text-fill: black;";
 
     public static final String labelStyle = "-fx-font-weight: bold; " +
             "-fx-font-size: 14px; " +
             "-fx-text-fill: black; " +
-            "-fx-background-color: lightblue;";
+            "-fx-background-color: #9787AF;";
 
     public static final String labelLowStockStyle =
             "-fx-font-size: 12px; -fx-text-fill: red;";
@@ -71,20 +71,29 @@ public final class UIStyle {
 
     public static final String buttonStyle = "-fx-font-size: 15";
 
-    public static final String rootStyle = "-fx-padding: 8px; " +
-            "-fx-background-color: lightgreen";
+    public static final String purpleBtnStyle = "-fx-font-size: 15" + 
+            "-fx-border-color: #9787AF;" + "-fx-background-color: #DDD7F5;" +
+            "-fx-text-fill: #9787AF;";
 
+    public static final String rootStyle = "-fx-padding: 8px; ";
+
+    public static final String emergencyExitStyle = "-fx-padding: 1px;" + 
+            "-fx-background-color: #58A4B0;";
+
+    public static final String orderHubStyle = "-fx-padding: 8px;" +
+            "-fx-background-color: #9787AF;";
+
+    public static final String btnStyle = "-fx-border: none;" +
+            "-fx-background-color: #58A4B0;";
+            
     public static final String rootStyleBlue = "-fx-padding: 8px; " +
             "-fx-background-color: lightblue";
 
-    public static final String rootStyleGray = "-fx-padding: 8px; " +
-            "-fx-background-color: lightgray";
+    public static final String rootStyleGray = "-fx-padding: 8px; ";
 
-    public static final String rootStyleWarehouse = "-fx-padding: 8px; " +
-            "-fx-background-color: lightpink";
+    public static final String rootStyleWarehouse = "-fx-padding: 8px; ";
 
-    public static final String rootStyleYellow = "-fx-padding: 8px; " +
-            "-fx-background-color: lightyellow";
+    public static final String processingWindowStyle = "-fx-padding: 8px; " ;
 
     public static final String rootVipCustomerStyle = "-fx-padding: 8px; " +
             "-fx-background-color: burlywood";
@@ -95,8 +104,7 @@ public final class UIStyle {
     public static final String smallTextFiledStyle = "-fx-font-size: 14";
     public static final String tinyTextFiledStyle = "-fx-font-size: 12";
 
-    public static final String labelMulLineStyle = "-fx-font-size: 16px; " +
-            "-fx-background-color: lightpink";
+    public static final String labelMulLineStyle = "-fx-font-size: 16px; ";
 
     public static final String labelPriceStyle = "-fx-font-size: 16px; " +
             "-fx-background-color: lightyellow";
@@ -104,18 +112,20 @@ public final class UIStyle {
     public static final String listViewStyle = "-fx-border-color: #ccc; " +
             "-fx-border-width: 1px; -fx-background-color: white; -fx-font-size: 14px;";
 
-    public static final String manageStockChildStyle = "-fx-background-color: lightgrey; " +
-            "-fx-border-color: lightgrey; " +
+    public static final String manageStockChildStyle = 
             "-fx-border-width: 1px; " +
             "-fx-padding: 5px;";
 
-    public static final String manageStockChildStyle1 = "-fx-background-color: lightyellow; " +
-            "-fx-border-color: lightyellow; " +
+    public static final String manageStockChildStyle1 = "-fx-background-color: lightgray;" +
             "-fx-border-width: 1px; " +
             "-fx-padding: 5px;";
 
-    public static final String greenFillBtnStyle = "-fx-background-color: green; " +
+    public static final String blueBtnStyle = "-fx-background-color: #A3C8D1;" +
+            "-fx-border-color: #58A4B0;" + "-fx-text-fill: black;";
+
+    public static final String plusFillBtnStyle = "-fx-background-color: green; " +
             "-fx-text-fill: white; -fx-font-size: 14px;";
+
     public static final String redFillBtnStyle = "-fx-background-color: red; " +
             "-fx-text-fill: white; -fx-font-size: 14px; ";
 
