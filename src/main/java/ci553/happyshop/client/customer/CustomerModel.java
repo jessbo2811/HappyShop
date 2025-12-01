@@ -1,20 +1,20 @@
 package ci553.happyshop.client.customer;
 
-import ci553.happyshop.catalogue.Order;
-import ci553.happyshop.catalogue.Product;
-import ci553.happyshop.storageAccess.DatabaseRW;
-import ci553.happyshop.orderManagement.OrderHub;
-import ci553.happyshop.utility.StorageLocation;
-import ci553.happyshop.utility.ProductListFormatter;
-
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Comparator;
+
+import ci553.happyshop.catalogue.Order;
+import ci553.happyshop.catalogue.Product;
+import ci553.happyshop.orderManagement.OrderHub;
+import ci553.happyshop.storageAccess.DatabaseRW;
+import ci553.happyshop.utility.ProductListFormatter;
+import ci553.happyshop.utility.StorageLocation;
 
 
 /**
@@ -31,7 +31,7 @@ public class CustomerModel {
     private ArrayList<Product> trolley =  new ArrayList<>(); // a list of products in trolley
 
     // Four UI elements to be passed to CustomerView for display updates.
-    private String imageName = "imageHolder.jpg";                // Image to show in product preview (Search Page)
+    private String imageName = "search.jpg";                // Image to show in product preview (Search Page)
     private String displayLaSearchResult = "No Product was searched yet"; // Label showing search result message (Search Page)
     private String displayTaTrolley = "";                                // Text area content showing current trolley items (Trolley Page)
     private String displayTaReceipt = "";                                // Text area content showing receipt after checkout (Receipt Page)
@@ -200,7 +200,7 @@ public class CustomerModel {
             System.out.println("Image absolute path: " + imageFullPath); // Debugging to ensure path is correct
         }
         else{
-            imageName = "imageHolder.jpg";
+            imageName = "search.jpg";
         }
         cusView.update(imageName, displayLaSearchResult, displayTaTrolley,displayTaReceipt);
     }

@@ -1,5 +1,8 @@
 package ci553.happyshop.client.customer;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
 import ci553.happyshop.utility.UIStyle;
 import ci553.happyshop.utility.WinPosManager;
 import ci553.happyshop.utility.WindowBounds;
@@ -7,16 +10,17 @@ import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-
-import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * The CustomerView is separated into two sections by a line :
@@ -102,7 +106,7 @@ public class CustomerView  {
         btnAddToTrolley.setOnAction(this::buttonClicked);
         HBox hbBtns = new HBox(10, laPlaceHolder,btnSearch, btnAddToTrolley);
 
-        ivProduct = new ImageView("imageHolder.jpg");
+        ivProduct = new ImageView("search.jpg");
         ivProduct.setFitHeight(60);
         ivProduct.setFitWidth(60);
         ivProduct.setPreserveRatio(true); // Image keeps its original shape and fits inside 60×60
