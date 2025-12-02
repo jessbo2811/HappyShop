@@ -60,6 +60,7 @@ public final class UIStyle {
 
     public static final String labelStyle = "-fx-font-weight: bold; " +
             "-fx-font-size: 14px; " +
+            "-fx-text-align: right;" +
             "-fx-text-fill: black; " +
             "-fx-background-color: #9787AF;";
 
@@ -100,7 +101,8 @@ public final class UIStyle {
 
     public static final String spinnerArrowStyle = "-fx-font-size: 12px; -fx-padding: 0;";
 
-    public static final String textFiledStyle = "-fx-font-size: 16";
+    public static final String textFiledStyle = "-fx-font-size: 16" +
+            "-fx-text-align: right;";
     public static final String smallTextFiledStyle = "-fx-font-size: 14";
     public static final String tinyTextFiledStyle = "-fx-font-size: 12";
 

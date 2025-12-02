@@ -143,7 +143,7 @@ public class WarehouseView  {
         // Divider line between SearchPage and ProductFormPage
         Line line = new Line(0, 0, 0, HEIGHT);
         line.setStrokeWidth(4);
-        line.setStroke(Color.LIGHTSKYBLUE);
+        line.setStroke(Color.WHITE);
         VBox lineContainer = new VBox(line);
         lineContainer.setPrefWidth(4);
         lineContainer.setAlignment(Pos.CENTER);
