@@ -41,4 +41,18 @@ public class CustomerClient extends Application {
         //removeProductNotifier.cusView = cusView;
         //cusModel.removeProductNotifier = removeProductNotifier;
     }
+
+    public CustomerModel TestStart(){
+        CustomerView cusView = new CustomerView();
+        CustomerController cusController = new CustomerController();
+        CustomerModel cusModel = new CustomerModel();
+        DatabaseRW databaseRW = DatabaseRWFactory.createDatabaseRW();
+
+        cusView.cusController = cusController;
+        cusController.cusModel = cusModel;
+        cusModel.cusView = cusView;
+        cusModel.databaseRW = databaseRW;
+        return cusModel;
+    }
+
 }
