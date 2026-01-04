@@ -48,12 +48,17 @@ public class OrderFileManager {
     public static void createOrderFile(Path dir, int orderId, String orderDetail) throws IOException {
         String orderFileName = String.valueOf(orderId)+".txt";
         Path path = dir.resolve(orderFileName); // eg. orders/ordered/12.txt
+        System.out.println(path);
         if(Files.notExists(path)) {
             Files.createFile(path);
+            
             try (BufferedWriter writer = Files.newBufferedWriter(path)) {
                 writer.write(orderDetail);
                 writer.newLine();
                 System.out.println(path + " created");
+            }
+            catch(Exception e){
+                System.out.println(e.getStackTrace());
             }
         }
         else{
