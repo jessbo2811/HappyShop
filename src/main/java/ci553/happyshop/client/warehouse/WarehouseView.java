@@ -29,6 +29,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -299,17 +301,23 @@ public class WarehouseView  {
         tfIdEdit = new TextField();
         tfIdEdit.setEditable(false);
         tfIdEdit.setStyle("-fx-font-size: 14px; -fx-pref-width: 100px;");
-        HBox hbId = new HBox(10, laId, tfIdEdit);
-        hbId.setAlignment(Pos.CENTER_LEFT);
+        HBox hbId = new HBox(10);
+
+        Region spacer = new Region();
+        HBox.setHgrow(spacer, Priority.ALWAYS);
+
+        hbId.getChildren().addAll(laId, spacer, tfIdEdit);
 
         // HBox for Price Label and TextField
         Label laPrice = new Label("Price:");
         laPrice.setStyle(UIStyle.labelStyle);
         tfPriceEdit = new TextField();
         tfPriceEdit.setStyle("-fx-font-size: 14px; -fx-pref-width: 100px;");
-        HBox hbPrice = new HBox(10, laPrice, tfPriceEdit);
-        hbPrice.setAlignment(Pos.CENTER_LEFT);
+        HBox hbPrice = new HBox(10);
+        Region spacer2 = new Region();
+        HBox.setHgrow(spacer2, Priority.ALWAYS);
 
+        hbPrice.getChildren().addAll(laPrice, spacer2, tfPriceEdit);
         //VBox for id and price
         VBox vbIdPrice = new VBox(10, hbId, hbPrice);
 

@@ -17,6 +17,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Line;
@@ -88,14 +90,31 @@ public class CustomerView  {
         tfId = new TextField();
         tfId.setPromptText("eg. 0001");
         tfId.setStyle(UIStyle.textFiledStyle);
-        HBox hbId = new HBox(10, laId, tfId);
+        HBox hbId = new HBox(10);
+        Region leftSpacer = new Region();
+        leftSpacer.setPrefWidth(20); // moves label closer to text field
+
+        // created a spacer to line the search boxes up properly
+        Region rightSpacer = new Region();
+        HBox.setHgrow(rightSpacer, Priority.ALWAYS);
+
+        hbId.getChildren().addAll(leftSpacer, laId, rightSpacer, tfId);
 
         Label laName = new Label("Name:");
         laName.setStyle(UIStyle.labelStyle);
         tfName = new TextField();
         tfName.setPromptText("eg. \"40 inch TV\"");
         tfName.setStyle(UIStyle.textFiledStyle);
-        HBox hbName = new HBox(10, laName, tfName);
+        HBox hbName = new HBox(10);
+
+        Region leftSpacer2 = new Region();
+        leftSpacer.setPrefWidth(20); // moves label closer to text field
+
+        // created a spacer to line the search boxes up properly
+        Region rightSpacer2 = new Region();
+        HBox.setHgrow(rightSpacer2, Priority.ALWAYS);
+
+        hbName.getChildren().addAll(leftSpacer2, laName, rightSpacer2, tfName);
 
         Label laPlaceHolder = new Label(  " ".repeat(15)); //create left-side spacing so that this HBox aligns with others in the layout.
         Button btnSearch = new Button("Search");

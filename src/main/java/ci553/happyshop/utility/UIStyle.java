@@ -108,6 +108,8 @@ public final class UIStyle {
 
     public static final String labelMulLineStyle = "-fx-font-size: 16px; ";
 
+    public static final 
+
     public static final String labelPriceStyle = "-fx-font-size: 16px; " +
             "-fx-background-color: lightyellow";
 
