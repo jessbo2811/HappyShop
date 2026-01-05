@@ -63,6 +63,7 @@ public class SearchTests {
         assertEquals(out.getProductId(), "0001");
         cusView.tfId = new TextField("");
 
+        //Search by name
         cusView.tfName = new TextField("TV");
         out = DoSearch(cusModel);
         assertEquals(out.getProductDescription(), "40 inch TV");

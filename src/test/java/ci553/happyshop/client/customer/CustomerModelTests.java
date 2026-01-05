@@ -28,7 +28,6 @@ public class CustomerModelTests {
                 CustomerClient client = new CustomerClient();
                 CustomerModel model = client.TestStart();
                 
-                // Safe to create TextField now
                 model.cusView.tfName = new TextField("USB");
                 model.search();
                 
