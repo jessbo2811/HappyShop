@@ -2,7 +2,7 @@ name: HappyShopTests
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, automatic-testing ]
   pull_request:
     branches: [ master ]
 
