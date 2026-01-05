@@ -17,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class SearchTests {
 
-    @Test
+    @Test //Test 3
     void Test() throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1); //Latch to wait for thread to finish
 

@@ -21,7 +21,7 @@ public class CustomerModelTests {
         t.start();
         t.join();
     }
-    @Test
+    @Test //Test 2
     void SearchByNameTest() throws SQLException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException{
         Platform.runLater(() -> {
             try {

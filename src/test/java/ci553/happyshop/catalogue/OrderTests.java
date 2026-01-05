@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class OrderTests {
 
 
-    @Test
+    @Test //Test 1
     void OrderConstructor(){
         int orderID = 5;
         OrderState state = OrderState.Collected;
