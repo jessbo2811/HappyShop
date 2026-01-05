@@ -47,7 +47,7 @@ public class CustomerView  {
     //four controllers needs updating when program going on
     private ImageView ivProduct; //image area in searchPage
     private Label lbProductInfo;//product text info in searchPage
-    private TextArea taTrolley; //in trolley Page
+    TextArea taTrolley; //in trolley Page
     private TextArea taReceipt;//in receipt page
 
     // Holds a reference to this CustomerView window for future access and management
