@@ -83,11 +83,11 @@ public class CustomerModel {
         if(theProduct!= null){
 
             // trolley.add(theProduct) — Product is appended to the end of the trolley.
-            // To keep the trolley organized, add code here or call a method that:
-            //TODO
-            // 1. Merges items with the same product ID (combining their quantities).
-            // 2. Sorts the products in the trolley by product ID.
-            trolley.add(theProduct);
+            //Only if this product is not yet in trolley, we need a new item, otherwise is added to existing item
+            if (!makeOrganizedTrolley()){
+                trolley.add(theProduct);
+            }
+            trolley.sort(Comparator.comparing(Product::getProductId));
             displayTaTrolley = ProductListFormatter.buildString(trolley); //build a String for trolley so that we can show it
         }
         else{
@@ -98,16 +98,14 @@ public class CustomerModel {
         updateView();
     }
 
-        void makeOrganizedTrolley(){
+    boolean makeOrganizedTrolley(){ // making sure the quantities of producys add up together
         for ( Product product : trolley) {
             if ( product.getProductId().equals(theProduct.getProductId())) {
-                product.setOrderedQuantity(product.getOrderedQuantity() + theProduct.getOrderedQuantity());
-                return;
+                product.setOrderedQuantity(product.getOrderedQuantity() + 1);
+                return true;
             }
         }
-        Product newProduct = new Product(theProduct.getProductId(), theProduct.getProductDescription(), theProduct.getProductImageName(), theProduct.getUnitPrice(), theProduct.getStockQuantity());
-        trolley.add(newProduct);
-        trolley.sort(Comparator.comparing(Product::getProductId));
+        return false;
     }
 
     void checkOut() throws IOException, SQLException {
