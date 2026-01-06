@@ -27,7 +27,7 @@ public class CustomerModel {
     public DatabaseRW databaseRW; //Interface type, not specific implementation
                                   //Benefits: Flexibility: Easily change the database implementation.
 
-    private Product theProduct =null; // product found from search
+    private Product theProduct =null; // product found from search - not private to allow tests to access without reflection
     private ArrayList<Product> trolley =  new ArrayList<>(); // a list of products in trolley
 
     // Four UI elements to be passed to CustomerView for display updates.
@@ -35,32 +35,12 @@ public class CustomerModel {
     private String displayLaSearchResult = "No Product was searched yet"; // Label showing search result message (Search Page)
     private String displayTaTrolley = "";                                // Text area content showing current trolley items (Trolley Page)
     private String displayTaReceipt = "";                                // Text area content showing receipt after checkout (Receipt Page)
-
-    //SELECT productID, description, image, unitPrice,inStock quantity
-    void search() throws SQLException {
+    //Executes a search using the Textfields from the customer view
+    //Displays the result
+    void doSearch() throws SQLException{
         String productId = cusView.tfId.getText().trim();
         String productDesc = cusView.tfName.getText().trim();
-
-        // If no input provided
-        if (productId.isEmpty() && productDesc.isEmpty()) {
-            theProduct = null;
-            displayLaSearchResult = "Please type in an ID or Name.";
-            System.out.println(displayLaSearchResult); // for testing purposes
-            return;
-        }
-
-        // Search logic for id and desc
-        if (!productId.isEmpty() && !productDesc.isEmpty()) {
-            // Search by ID first then to description if not found
-            theProduct = databaseRW.searchByProductId(productId);
-            if (theProduct == null) {
-                theProduct = databaseRW.searchProduct(productDesc).getFirst();
-            }
-        } else if (!productId.isEmpty()) {
-            theProduct = databaseRW.searchByProductId(productId);
-        } else {
-            theProduct = databaseRW.searchProduct(productDesc).getFirst();
-        }
+        theProduct = search(productId, productDesc);
 
         // Display result
         if (theProduct != null && theProduct.getStockQuantity() > 0) {
@@ -78,27 +58,50 @@ public class CustomerModel {
         }
         updateView();
     }
+    
+    //SELECT productID, description, image, unitPrice,inStock quantity
+    Product search(String productId, String productDesc) throws SQLException {
+        Product searchResult;
+        // If no input provided
+        if (productId.isEmpty() && productDesc.isEmpty()) {
+            displayLaSearchResult = "Please type in an ID or Name.";
+            System.out.println(displayLaSearchResult); // for testing purposes
+            return null;
+        }
+        // Search logic for id and desc
+        if (!productId.isEmpty() && !productDesc.isEmpty()) {
+            // Search by ID first then to description if not found
+            searchResult = databaseRW.searchByProductId(productId);
+            if (searchResult == null) {
+                searchResult = databaseRW.searchProduct(productDesc).getFirst();
+            }
+        } else if (!productId.isEmpty()) {
+            searchResult = databaseRW.searchByProductId(productId);
+        } else {
+            searchResult = databaseRW.searchProduct(productDesc).getFirst();
+        }
+        return searchResult;
+
+    }
 
     void addToTrolley(){
-        if(theProduct!= null){
-
-            // trolley.add(theProduct) — Product is appended to the end of the trolley.
-            //Only if this product is not yet in trolley, we need a new item, otherwise is added to existing item
-            if (!makeOrganizedTrolley()){
-                trolley.add(theProduct);
-            }
-            trolley.sort(Comparator.comparing(Product::getProductId));
-            displayTaTrolley = ProductListFormatter.buildString(trolley); //build a String for trolley so that we can show it
-        }
-        else{
+        if(theProduct == null){
             displayLaSearchResult = "Please search for an available product before adding it to the trolley";
             System.out.println("must search and get an available product before add to trolley");
         }
+
+        // trolley.add(theProduct) — Product is appended to the end of the trolley.
+        //Only if this product is not yet in trolley, we need a new item, otherwise is added to existing item
+        if (!productAlreadyInTrolley()){
+            trolley.add(theProduct);
+        }
+        trolley.sort(Comparator.comparing(Product::getProductId));
+        displayTaTrolley = ProductListFormatter.buildString(trolley); //build a String for trolley so that we can show it
         displayTaReceipt=""; // Clear receipt to switch back to trolleyPage (receipt shows only when not empty)
         updateView();
     }
 
-    boolean makeOrganizedTrolley(){ // making sure the quantities of producys add up together
+    boolean productAlreadyInTrolley(){ // making sure the quantities of products add up together
         for ( Product product : trolley) {
             if ( product.getProductId().equals(theProduct.getProductId())) {
                 product.setOrderedQuantity(product.getOrderedQuantity() + 1);
