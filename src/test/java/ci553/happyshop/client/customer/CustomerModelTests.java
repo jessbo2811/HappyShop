@@ -1,44 +1,25 @@
 package ci553.happyshop.client.customer;
 
-import java.lang.reflect.Field;
 import java.sql.SQLException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import ci553.happyshop.catalogue.Product;
-import javafx.application.Platform;
-import javafx.scene.control.TextField;
+import ci553.happyshop.storageAccess.DatabaseRW;
+import ci553.happyshop.storageAccess.DatabaseRWFactory;
 
 public class CustomerModelTests {
-
-//This starts JavaFX so we can use controls ect to be passed in to the customer model
-    @BeforeAll
-    static void initToolkit() throws InterruptedException {
-        Thread t = new Thread(() -> Platform.startup(() -> {}));
-        t.setDaemon(true);
-        t.start();
-        t.join();
-    }
     @Test //Test 2
     void SearchByNameTest() throws SQLException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException{
-        Platform.runLater(() -> {
-            try {
-                CustomerClient client = new CustomerClient();
-                CustomerModel model = client.TestStart();
-                
-                model.cusView.tfName = new TextField("USB");
-                model.search();
-                
-                Field productField = CustomerModel.class.getDeclaredField("TheProduct");
-                productField.setAccessible(true);
-                Product castSearchResult = (Product) productField.get(model);
-                
-                assertEquals("0007", castSearchResult.getProductId());
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
+        CustomerView cusView = new CustomerView();
+        CustomerController cusController = new CustomerController();
+        CustomerModel cusModel = new CustomerModel();
+        DatabaseRW databaseRW = DatabaseRWFactory.createDatabaseRW();
+        
+        Product search = cusModel.search("0001", "");
+        assertEquals(search.getProductId(), "0001");
+        search = cusModel.search("", "TV");
+        assertEquals(search.getProductDescription(), "40 inch TV");
     }
 }
