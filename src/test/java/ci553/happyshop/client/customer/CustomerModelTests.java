@@ -16,6 +16,11 @@ public class CustomerModelTests {
         CustomerController cusController = new CustomerController();
         CustomerModel cusModel = new CustomerModel();
         DatabaseRW databaseRW = DatabaseRWFactory.createDatabaseRW();
+
+        cusView.cusController = cusController;
+        cusController.cusModel = cusModel;
+        cusModel.cusView = cusView;
+        cusModel.databaseRW = databaseRW;
         
         Product search = cusModel.search("0001", "");
         assertEquals(search.getProductId(), "0001");
