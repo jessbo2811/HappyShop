@@ -85,25 +85,23 @@ public class CustomerModel {
     }
 
     void addToTrolley(){
-        if(theProduct!= null){
-
-            // trolley.add(theProduct) — Product is appended to the end of the trolley.
-            //Only if this product is not yet in trolley, we need a new item, otherwise is added to existing item
-            if (!makeOrganizedTrolley()){
-                trolley.add(theProduct);
-            }
-            trolley.sort(Comparator.comparing(Product::getProductId));
-            displayTaTrolley = ProductListFormatter.buildString(trolley); //build a String for trolley so that we can show it
-        }
-        else{
+        if(theProduct == null){
             displayLaSearchResult = "Please search for an available product before adding it to the trolley";
             System.out.println("must search and get an available product before add to trolley");
         }
+
+        // trolley.add(theProduct) — Product is appended to the end of the trolley.
+        //Only if this product is not yet in trolley, we need a new item, otherwise is added to existing item
+        if (!productAlreadyInTrolley()){
+            trolley.add(theProduct);
+        }
+        trolley.sort(Comparator.comparing(Product::getProductId));
+        displayTaTrolley = ProductListFormatter.buildString(trolley); //build a String for trolley so that we can show it
         displayTaReceipt=""; // Clear receipt to switch back to trolleyPage (receipt shows only when not empty)
         updateView();
     }
 
-    boolean makeOrganizedTrolley(){ // making sure the quantities of producys add up together
+    boolean productAlreadyInTrolley(){ // making sure the quantities of products add up together
         for ( Product product : trolley) {
             if ( product.getProductId().equals(theProduct.getProductId())) {
                 product.setOrderedQuantity(product.getOrderedQuantity() + 1);
