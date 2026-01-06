@@ -24,7 +24,9 @@ jobs:
       run: mvn clean compile
 
     - name: Run tests
-      run: mvn test
+      run: |
+        export DISPLAY=:99
+        mvn test
 
     - name: Publish test results
       if: always()
