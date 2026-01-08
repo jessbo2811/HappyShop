@@ -72,7 +72,10 @@ public class LoginView {
         return loginPage;
     }
 
-    void update(LoginType loginType){
+    void update(LoginType loginType, boolean loggedIn){
+        if (loggedIn){
+            viewWindow.hide();
+        }
         switch (loginType){
             case LoginType.Customer:
                 laPageTitle.setText("Customer Login");

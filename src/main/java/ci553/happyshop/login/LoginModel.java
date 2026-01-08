@@ -12,6 +12,8 @@ public class LoginModel {
 
     public LoginType loginType = LoginType.Customer;
 
+    private boolean loggedIn = false;
+
     Map<String, String> staffLogins;
     Map<String, String> customerLogins;
 
@@ -37,23 +39,30 @@ public class LoginModel {
         String userInput = loginView.tfUsername.getText();
         String passInput = loginView.tfPassword.getText();
         if (attemptLogin(userInput, passInput)){
-            System.out.println("Successful login!");
+            loggedIn = true;
             if (loginType == LoginType.Customer){
                 main.loggedInCustomer();
             }
             else{
                 main.loggedInStaff();
             }
+            updateView();
         }
     }
     private boolean attemptLogin(String username, String password){
         if (loginType == LoginType.Customer){
+            if(!customerLogins.containsKey(username)){
+                return false;
+            }
             if (customerLogins.get(username).equals(password)){
                 return true;
             }
             return false;
         }
         else{
+            if (!staffLogins.containsKey(username)){
+                return false;
+            }
             if (staffLogins.get(username).equals(password)){
                 return true;
             }
@@ -61,6 +70,6 @@ public class LoginModel {
         }
     }
     void updateView(){
-        loginView.update(loginType);
+        loginView.update(loginType, loggedIn);
     }
 }
