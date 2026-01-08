@@ -70,7 +70,7 @@ public class PickerView  {
         taOrderMap.setPrefSize(WIDTH, HEIGHT - 100);
         taOrderMap.setStyle(UIStyle.textFiledStyle);
 
-        Button btnProgressing = new Button("Progressing");
+        Button btnProgressing = new Button("Progress");
         btnProgressing.setOnAction(this::buttonClicked);
         btnProgressing.setStyle(UIStyle.purpleBtnStyle);
 
@@ -107,7 +107,7 @@ public class PickerView  {
         try {
             // Based on the button's text, performs the appropriate action and switches the displayed root.
             switch (btnText) {
-                case "Progressing":
+                case "Progress":
                     scene.setRoot(vbOrderDetailRoot); // switch to OrderDetailRoot
                     pickerController.doProgressing();
                     break;

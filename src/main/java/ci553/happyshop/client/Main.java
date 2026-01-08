@@ -46,16 +46,23 @@ public class Main extends Application {
     @Override
     public void start(Stage window) throws IOException {
         startLoginClient();
-        startCustomerClient();
+        startEmergencyExit();
+    }
+    public void loggedInStaff(){
         startPickerClient();
         startOrderTracker();
-
         // Initializes the order map for the OrderHub. This must be called after starting the observer clients
         // (such as OrderTracker and Picker clients) to ensure they are properly registered for receiving updates.
+
+
+        initializeOrderMap();
+        startWarehouseClient();
+    }
+    public void loggedInCustomer(){
+        startOrderTracker();
         initializeOrderMap();
 
-        startWarehouseClient();
-
+        startCustomerClient();
         startEmergencyExit();
     }
 
@@ -67,6 +74,8 @@ public class Main extends Application {
         loginView.loginController = loginController;
         loginController.loginModel = loginModel;
         loginModel.loginView = loginView;
+
+        loginModel.setUpLogins(this);
         loginView.start(new Stage());
     }
 
