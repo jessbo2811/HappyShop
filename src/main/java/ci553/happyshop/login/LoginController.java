@@ -7,8 +7,10 @@ public class LoginController {
         switch (action){
             case "SwitchLogin":
                 loginModel.switchLoginType();
+                break;
             case "LoginPressed":
                 loginModel.loginPressed();
+                break;
         }
     }
 }

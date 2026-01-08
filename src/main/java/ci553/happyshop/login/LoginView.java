@@ -20,6 +20,7 @@ public class LoginView {
     TextField tfUsername;
     TextField tfPassword;
     private Button toggleLogin;
+    private Label laPageTitle;
 
     private Stage viewWindow;
 
@@ -37,10 +38,14 @@ public class LoginView {
         viewWindow = window;
     }
     private VBox createLoginPage(){
-        Label laPageTitle = new Label("Login");
+        laPageTitle = new Label("Customer Login");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
 
-        VBox loginPage = new VBox(15, laPageTitle);
+        toggleLogin = new Button("Switch to staff login");
+        toggleLogin.setStyle(UIStyle.blueBtnStyle);
+        toggleLogin.setOnAction(e -> loginController.doAction("SwitchLogin"));
+
+        VBox loginPage = new VBox(15, laPageTitle, toggleLogin);
         loginPage.setAlignment(Pos.TOP_CENTER);
         loginPage.setStyle("-fx-padding: 15px");
         return loginPage;
@@ -49,9 +54,14 @@ public class LoginView {
     void update(LoginType loginType){
         switch (loginType){
             case LoginType.Customer:
-                System.out.println("CustomerLogin");
+                laPageTitle.setText("Customer Login");
+                toggleLogin.setText("Switch to staff login");
+                break;
             case LoginType.Staff:
-                System.out.println("StaffLogin");
+                laPageTitle.setText("Staff Login");
+                toggleLogin.setText("Switch to customer login");
+                break;
+
         }
     }
 }
