@@ -9,6 +9,9 @@ import ci553.happyshop.client.picker.PickerModel;
 import ci553.happyshop.client.picker.PickerView;
 
 import ci553.happyshop.client.warehouse.*;
+import ci553.happyshop.login.LoginController;
+import ci553.happyshop.login.LoginModel;
+import ci553.happyshop.login.LoginView;
 import ci553.happyshop.orderManagement.OrderHub;
 import ci553.happyshop.storageAccess.DatabaseRW;
 import ci553.happyshop.storageAccess.DatabaseRWFactory;
@@ -42,6 +45,7 @@ public class Main extends Application {
     //starts the system
     @Override
     public void start(Stage window) throws IOException {
+        startLoginClient();
         startCustomerClient();
         startPickerClient();
         startOrderTracker();
@@ -54,6 +58,18 @@ public class Main extends Application {
 
         startEmergencyExit();
     }
+
+    private void startLoginClient(){
+        LoginView loginView = new LoginView();
+        LoginController loginController = new LoginController();
+        LoginModel loginModel = new LoginModel();
+
+        loginView.loginController = loginController;
+        loginController.loginModel = loginModel;
+        loginModel.loginView = loginView;
+        loginView.start(new Stage());
+    }
+
 
     /** The customer GUI -search prodduct, add to trolley, cancel/submit trolley, view receipt
      *

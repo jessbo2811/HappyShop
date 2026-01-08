@@ -154,4 +154,11 @@ public final class UIStyle {
 
     public static final String tooltipStyle = "-fx-background-color: lightyellow; -fx-text-fill: red;";
 
+    //=====Login Settings=====
+
+    public static final int loginMinWidth = 200;
+
+    public static final int loginMinHeight = 400;
+
+
 }
