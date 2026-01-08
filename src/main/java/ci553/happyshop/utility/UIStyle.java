@@ -156,9 +156,9 @@ public final class UIStyle {
 
     //=====Login Settings=====
 
-    public static final int loginMinWidth = 200;
+    public static final int loginMinWidth = 400;
 
-    public static final int loginMinHeight = 400;
+    public static final int loginMinHeight = 300;
 
 
 }

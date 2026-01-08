@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -45,7 +46,27 @@ public class LoginView {
         toggleLogin.setStyle(UIStyle.blueBtnStyle);
         toggleLogin.setOnAction(e -> loginController.doAction("SwitchLogin"));
 
-        VBox loginPage = new VBox(15, laPageTitle, toggleLogin);
+        Label usernameLabel = new Label("Username:");
+        usernameLabel.setStyle(UIStyle.labelStyle);
+
+        tfUsername = new TextField("");
+        tfUsername.setStyle(UIStyle.textFiledStyle);
+
+        HBox userSection = new HBox(usernameLabel, tfUsername);
+
+        Label passwordLabel = new Label("Password");
+        passwordLabel.setStyle(UIStyle.labelStyle);
+
+        tfPassword = new TextField("");
+        tfPassword.setStyle(UIStyle.textFiledStyle);
+
+        HBox passSection = new HBox(passwordLabel, tfPassword);
+
+        Button loginButton = new Button("Login");
+        loginButton.setStyle(UIStyle.blueBtnStyle);
+        loginButton.setOnAction(e -> loginController.doAction("LoginPressed"));
+
+        VBox loginPage = new VBox(15, laPageTitle, toggleLogin, userSection, passSection, loginButton);
         loginPage.setAlignment(Pos.TOP_CENTER);
         loginPage.setStyle("-fx-padding: 15px");
         return loginPage;
