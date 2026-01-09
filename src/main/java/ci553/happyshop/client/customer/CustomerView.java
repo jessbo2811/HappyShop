@@ -204,6 +204,10 @@ public class CustomerView  {
             if(action.equals("OK & Close")){
                 showTrolleyOrReceiptPage(vbTrolleyPage);
             }
+            if (action.equals("Check Out")){
+                CheckoutConfirmation confirm = new CheckoutConfirmation(this);
+                return;
+            }
             cusController.doAction(action);
         }
         catch(SQLException e){
@@ -213,7 +217,9 @@ public class CustomerView  {
         }
     }
 
-
+    public void confirmCheckout() throws SQLException, IOException{
+        cusController.doAction("Check Out");
+    }
     public void update(String imageName, String searchResult, String trolley, String receipt) {
 
         ivProduct.setImage(new Image(imageName));
