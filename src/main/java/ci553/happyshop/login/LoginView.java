@@ -25,6 +25,9 @@ public class LoginView {
 
     private Stage viewWindow;
 
+    /** 
+     * @param window
+     */
     public void start(Stage window) {
         VBox loginPage = createLoginPage();
         root = new VBox(10, loginPage);
@@ -38,6 +41,9 @@ public class LoginView {
         window.show();
         viewWindow = window;
     }
+    /** 
+     * @return VBox
+     */
     private VBox createLoginPage(){
         laPageTitle = new Label("Customer Login");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
@@ -72,6 +78,10 @@ public class LoginView {
         return loginPage;
     }
 
+    /** 
+     * @param loginType
+     * @param loggedIn
+     */
     void update(LoginType loginType, boolean loggedIn){
         if (loggedIn){
             viewWindow.hide();

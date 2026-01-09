@@ -56,6 +56,9 @@ public class CustomerView  {
     // (e.g., positioning the removeProductNotifier when needed).
     private Stage viewWindow;
 
+    /** 
+     * @param window
+     */
     public void start(Stage window) {
         VBox vbSearchPage = createSearchPage();
         vbTrolleyPage = CreateTrolleyPage();
@@ -81,6 +84,9 @@ public class CustomerView  {
         viewWindow=window;// Sets viewWindow to this window for future reference and management.
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox createSearchPage() {
         Label laPageTitle = new Label("Search by Product ID/Name");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
@@ -146,6 +152,9 @@ public class CustomerView  {
         return vbSearchPage;
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox CreateTrolleyPage() {
         Label laPageTitle = new Label("🛒🛒  Trolley 🛒🛒");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
@@ -173,6 +182,9 @@ public class CustomerView  {
         return vbTrolleyPage;
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox createReceiptPage() {
         Label laPageTitle = new Label("Receipt");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
@@ -194,6 +206,9 @@ public class CustomerView  {
     }
 
 
+    /** 
+     * @param event
+     */
     private void buttonClicked(ActionEvent event) {
         try{
             Button btn = (Button)event.getSource();
@@ -217,9 +232,19 @@ public class CustomerView  {
         }
     }
 
+    /** 
+     * @throws SQLException
+     * @throws IOException
+     */
     public void confirmCheckout() throws SQLException, IOException{
         cusController.doAction("Check Out");
     }
+    /** 
+     * @param imageName
+     * @param searchResult
+     * @param trolley
+     * @param receipt
+     */
     public void update(String imageName, String searchResult, String trolley, String receipt) {
 
         ivProduct.setImage(new Image(imageName));
@@ -231,6 +256,9 @@ public class CustomerView  {
         }
     }
 
+    /** 
+     * @param pageToShow
+     */
     // Replaces the last child of hbRoot with the specified page.
     // the last child is either vbTrolleyPage or vbReceiptPage.
     private void showTrolleyOrReceiptPage(Node pageToShow) {
@@ -240,6 +268,9 @@ public class CustomerView  {
         }
     }
 
+    /** 
+     * @return WindowBounds
+     */
     WindowBounds getWindowBounds() {
         return new WindowBounds(viewWindow.getX(), viewWindow.getY(),
                   viewWindow.getWidth(), viewWindow.getHeight());

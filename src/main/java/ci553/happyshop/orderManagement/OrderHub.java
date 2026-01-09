@@ -66,12 +66,21 @@ public class OrderHub  {
 
     //Singleton pattern
     private OrderHub() {}
+    /** 
+     * @return OrderHub
+     */
     public static OrderHub getOrderHub() {
         if (orderHub == null)
             orderHub = new OrderHub();
             return orderHub;
     }
 
+    /** 
+     * @param trolley
+     * @return Order
+     * @throws IOException
+     * @throws SQLException
+     */
     //Creates a new order using the provided list of products.
     //and also notify picker and orderTracker
     public Order newOrder(ArrayList<Product> trolley) throws IOException, SQLException {
@@ -92,6 +101,9 @@ public class OrderHub  {
         return theOrder;
     }
 
+    /** 
+     * @param orderTracker
+     */
     //Registers an OrderTracker to receive updates about changes.
     public void registerOrderTracker(OrderTracker orderTracker){
         orderTrackerList.add(orderTracker);
@@ -103,6 +115,9 @@ public class OrderHub  {
         }
     }
 
+    /** 
+     * @param pickerModel
+     */
     //Registers a PickerModel to receive updates about changes.
     public void registerPickerModel(PickerModel pickerModel){
         pickerModelList.add(pickerModel);
@@ -120,6 +135,10 @@ public class OrderHub  {
         }
     }
 
+    /** 
+     * @param state
+     * @return TreeMap<Integer, OrderState>
+     */
     // Filters orderMap that match the specified state, a helper class used by notifyPickerModel()
     private TreeMap<Integer, OrderState> filterOrdersByState(OrderState state) {
         TreeMap<Integer, OrderState> filteredOrderMap = new TreeMap<>(); // New map to hold filtered orders
@@ -132,6 +151,11 @@ public class OrderHub  {
         return filteredOrderMap;
     }
 
+    /** 
+     * @param orderId
+     * @param newState
+     * @throws IOException
+     */
     //Changes the state of the specified order, updates its file, and moves it to the appropriate folder.
     //trigger by PickerModel
     public void changeOrderStateMoveFile(int orderId, OrderState newState) throws IOException {
@@ -174,6 +198,11 @@ public class OrderHub  {
         }
     }
 
+    /** 
+     * @param orderId
+     * @return String
+     * @throws IOException
+     */
     // Reads details of an order for display in the picker once they started preparing the order.
     public String  getOrderDetailForPicker(int orderId) throws IOException {
         OrderState state = orderMap.get(orderId);
@@ -205,6 +234,10 @@ public class OrderHub  {
         System.out.println( orderedIds.size() + " Ordered orders, " +progressingIds.size() + " Progressing orders " );
     }
 
+    /** 
+     * @param dir
+     * @return ArrayList<Integer>
+     */
     // Loads a list of order IDs from the specified directory.
     // Used internally by initializeOrderMap().
     private ArrayList<Integer> orderIdsLoader(Path dir) {

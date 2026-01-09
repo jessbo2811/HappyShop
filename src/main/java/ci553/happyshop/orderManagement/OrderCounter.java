@@ -32,6 +32,10 @@ import java.nio.channels.FileLock;
 
 public class OrderCounter {
 
+    /** 
+     * @return int
+     * @throws IOException
+     */
     public static int generateOrderId() throws IOException {
         Path path = StorageLocation.orderCounterPath;
 

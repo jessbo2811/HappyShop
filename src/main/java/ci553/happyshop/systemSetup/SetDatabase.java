@@ -41,6 +41,11 @@ public class SetDatabase {
 
     private static final Lock lock = new ReentrantLock();    // Create a global lock
 
+    /** 
+     * @param args
+     * @throws SQLException
+     * @throws IOException
+     */
     public static void main(String[] args) throws SQLException, IOException {
         SetDatabase setDB = new SetDatabase();
         setDB.clearTables(); // clear all tables in the tables array from database if they are existing
@@ -51,6 +56,9 @@ public class SetDatabase {
 
     }
 
+    /** 
+     * @throws SQLException
+     */
     //Deletes all existing tables in the database.
     private void clearTables() throws SQLException {
         lock.lock();  // 🔒 Lock first
@@ -73,6 +81,9 @@ public class SetDatabase {
             lock.unlock();  // 🔓 Always unlock in finally block
         }
     }
+    /** 
+     * @throws SQLException
+     */
     //Recreates the database tables Inserts default values into the newly created tables.
     private void initializeTable() throws SQLException {
         lock.lock(); // Lock to ensure thread safety
@@ -132,6 +143,9 @@ public class SetDatabase {
         }
     }
 
+    /** 
+     * @throws SQLException
+     */
     private void queryTableAfterInitilization() throws SQLException {
         lock.lock();
         //Query ProductTable
@@ -164,6 +178,10 @@ public class SetDatabase {
         }
     }
 
+    /** 
+     * @param folder
+     * @throws IOException
+     */
     // Recursively deletes all files in a folder
     public static void deleteFilesInFolder(Path folder) throws IOException {
         if (Files.exists(folder)) {

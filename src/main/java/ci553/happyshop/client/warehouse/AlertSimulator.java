@@ -95,6 +95,9 @@ public class AlertSimulator {
         window.show();
     }
 
+    /** 
+     * @param errorMsg
+     */
     // Show error message in the alert window
     public  void showErrorMsg(String errorMsg) {
         if (window ==null ||!window.isShowing() ) {

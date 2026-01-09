@@ -1,8 +1,5 @@
 package ci553.happyshop.client.customer;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import ci553.happyshop.utility.WinPosManager;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;

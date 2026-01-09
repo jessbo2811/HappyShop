@@ -35,6 +35,9 @@ public class CustomerModel {
     private String displayLaSearchResult = "No Product was searched yet"; // Label showing search result message (Search Page)
     private String displayTaTrolley = "";                                // Text area content showing current trolley items (Trolley Page)
     private String displayTaReceipt = "";                                // Text area content showing receipt after checkout (Receipt Page)
+    /** 
+     * @throws SQLException
+     */
     //Executes a search using the Textfields from the customer view
     //Displays the result
     void doSearch() throws SQLException{
@@ -59,6 +62,12 @@ public class CustomerModel {
         updateView();
     }
     
+    /** 
+     * @param productId
+     * @param productDesc
+     * @return Product
+     * @throws SQLException
+     */
     //SELECT productID, description, image, unitPrice,inStock quantity
     Product search(String productId, String productDesc) throws SQLException {
         Product searchResult;
@@ -101,6 +110,10 @@ public class CustomerModel {
         updateView();
     }
 
+    /** 
+     * @param trolley
+     * @return boolean
+     */
     boolean productAlreadyInTrolley(){ // making sure the quantities of products add up together
         for ( Product product : trolley) {
             if ( product.getProductId().equals(theProduct.getProductId())) {
@@ -111,6 +124,10 @@ public class CustomerModel {
         return false;
     }
 
+    /** 
+     * @throws IOException
+     * @throws SQLException
+     */
     void checkOut() throws IOException, SQLException {
         if(!trolley.isEmpty()){
             // Group the products in the trolley by productId to optimize stock checking
@@ -205,6 +222,9 @@ public class CustomerModel {
         }
         cusView.update(imageName, displayLaSearchResult, displayTaTrolley,displayTaReceipt);
     }
+     /** 
+      * @return ArrayList<Product>
+      */
      // extra notes:
      //Path.toUri(): Converts a Path object (a file or a directory path) to a URI object.
      //File.toURI(): Converts a File object (a file on the filesystem) to a URI object

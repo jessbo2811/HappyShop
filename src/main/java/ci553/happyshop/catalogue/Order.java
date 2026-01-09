@@ -47,10 +47,17 @@ public class Order {
         this.productList = new ArrayList<>(productList);
     }
 
+    /** 
+     * @param getProductList(
+     * @return int
+     */
     //a set of getter methods
     public int getOrderId() { return orderId;}
     public OrderState getState() { return state; }
     public String getOrderedDateTime(){ return orderedDateTime; }
+    /** 
+     * @return ArrayList<Product>
+     */
     public ArrayList<Product> getProductList() {
         return productList;
     }

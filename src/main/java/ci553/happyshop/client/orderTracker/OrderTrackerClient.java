@@ -13,10 +13,16 @@ import javafx.stage.Stage;
 
 public class OrderTrackerClient extends Application {
 
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    /** 
+     * @param window
+     */
     @Override
     public void start(Stage window) {
         OrderTracker orderTracker = new OrderTracker();

@@ -41,6 +41,9 @@ public class PickerView  {
     private TextArea taOrderDetail = new TextArea();
         // TextArea for displaying detailed information about the selected order after it is assigned to the picker.
     private Label laDetailRootTitle;
+       /** 
+        * @param window
+        */
        // Label used as the title for the Order Detail section.
        // Reminds the picker not to close the window if the order hasn't been collected by the customer.
 
@@ -62,6 +65,9 @@ public class PickerView  {
         });
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox createOrderMapRoot() {
         Label laOrderMapRootTitle = new Label("Orders Waiting for Processing");
         laOrderMapRootTitle.setStyle(UIStyle.labelTitleStyle);
@@ -81,6 +87,9 @@ public class PickerView  {
         return vbOrdersListRoot;
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox createOrderDetailRoot() {
         laDetailRootTitle = new Label("Progressing Order Details");
         laDetailRootTitle.setStyle(UIStyle.labelTitleStyle);
@@ -101,6 +110,9 @@ public class PickerView  {
         return vbOrderDetailsRoot;
     }
 
+    /** 
+     * @param event
+     */
     private void buttonClicked(ActionEvent event) {
         Button button = (Button) event.getSource();
         String btnText = button.getText();
@@ -122,6 +134,10 @@ public class PickerView  {
         }
     }
 
+    /** 
+     * @param strOrderMap
+     * @param strOrderDetail
+     */
     void update(String strOrderMap, String strOrderDetail) {
         taOrderMap.setText(strOrderMap);
         taOrderDetail.setText(strOrderDetail);

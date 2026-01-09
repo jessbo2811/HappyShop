@@ -3,7 +3,6 @@ package ci553.happyshop.login;
 import java.util.Map;
 
 import ci553.happyshop.client.Main;
-import javafx.event.Event;
 
 import java.util.HashMap;
 
@@ -19,6 +18,9 @@ public class LoginModel {
 
     private Main main; //a reference to main so we can initialize the application once logged in
 
+    /** 
+     * @param main
+     */
     public void setUpLogins(Main main){
         this.main = main;
         staffLogins = new HashMap<>();
@@ -49,6 +51,11 @@ public class LoginModel {
             updateView();
         }
     }
+    /** 
+     * @param username
+     * @param password
+     * @return boolean
+     */
     private boolean attemptLogin(String username, String password){
         if (loginType == LoginType.Customer){
             if(!customerLogins.containsKey(username)){

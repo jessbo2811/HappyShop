@@ -6,6 +6,11 @@ import java.sql.SQLException;
 public class WarehouseController {
     public WarehouseModel model;
 
+    /** 
+     * @param action
+     * @throws SQLException
+     * @throws IOException
+     */
     void process(String action) throws SQLException, IOException {
         switch (action) {
             case "🔍":

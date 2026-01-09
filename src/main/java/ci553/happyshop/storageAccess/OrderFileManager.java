@@ -44,6 +44,12 @@ import java.time.format.DateTimeFormatter;
 
 public class OrderFileManager {
 
+    /** 
+     * @param dir
+     * @param orderId
+     * @param orderDetail
+     * @throws IOException
+     */
     //Creates a new order file in the specified directory with the given content.
     public static void createOrderFile(Path dir, int orderId, String orderDetail) throws IOException {
         String orderFileName = String.valueOf(orderId)+".txt";
@@ -66,6 +72,14 @@ public class OrderFileManager {
         }
     }
 
+    /** 
+     * @param orderId
+     * @param newState
+     * @param sourceDir
+     * @param targetDir
+     * @return boolean
+     * @throws IOException
+     */
     // Updates the order's state and corresponding timestamp, then moves the order file to the new state folder.
     //Ordered state in orders/ordered
     //Progressing state in orders/progressing
@@ -122,6 +136,12 @@ public class OrderFileManager {
         }
     }
 
+    /** 
+     * @param dir
+     * @param orderId
+     * @return String
+     * @throws IOException
+     */
     //Reads the content of an order file as a single string.
     public static String readOrderFile(Path dir, int orderId) throws IOException {
         String orderFileName = String.valueOf(orderId)+".txt";

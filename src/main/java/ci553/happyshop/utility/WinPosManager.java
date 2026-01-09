@@ -40,6 +40,11 @@ public final class WinPosManager {
         throw new UnsupportedOperationException("final_static class does not have object");
     }
 
+    /** 
+     * @param stage
+     * @param width
+     * @param height
+     */
     public static void registerWindow(Stage stage, double width, double height) {
         // Case 1: Fits in current row and within screen height
         if ((occupiedWidth + width < SCREEN_WIDTH - BASE_X) &&
@@ -74,6 +79,11 @@ public final class WinPosManager {
     }
 
 
+    /** 
+     * @param stage
+     * @param width
+     * @param height
+     */
     // Alternative window positioning strategy, (for reference, not used in this version):
     // overflow windows are placed in the last row,
     // continuing horizontally next to the last window.
