@@ -18,6 +18,9 @@ public class EmergencyExit {
     private final int HEIGHT = UIStyle.EmergencyExitWinHeight;
     private static EmergencyExit emergencyExit;
 
+    /** 
+     * @return EmergencyExit
+     */
     //used by Main class to get the single instance
     public static EmergencyExit getEmergencyExit() {
         if (emergencyExit == null)

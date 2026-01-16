@@ -10,7 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+//The view component of the Login system, constructs the window to enable the user to type in their credentials and swap between a staff or customer login
 public class LoginView {
     public LoginController loginController;
 
@@ -25,6 +25,10 @@ public class LoginView {
 
     private Stage viewWindow;
 
+    /** 
+     * starts the loginView, constructing all required elements within the window
+     * @param window the window to create the login page inside
+     */
     public void start(Stage window) {
         VBox loginPage = createLoginPage();
         root = new VBox(10, loginPage);
@@ -38,6 +42,10 @@ public class LoginView {
         window.show();
         viewWindow = window;
     }
+    /** 
+     * Creates the login page and returns everything parented under a VBox
+     * @return VBox the root of the login page
+     */
     private VBox createLoginPage(){
         laPageTitle = new Label("Customer Login");
         laPageTitle.setStyle(UIStyle.labelTitleStyle);
@@ -72,6 +80,11 @@ public class LoginView {
         return loginPage;
     }
 
+    /** 
+     * Updates the view with the current status of the LoginModel
+     * @param loginType Wether the loginView should show as a staff or customer login
+     * @param loggedIn If the login has been completed - if so the window should hide
+     */
     void update(LoginType loginType, boolean loggedIn){
         if (loggedIn){
             viewWindow.hide();

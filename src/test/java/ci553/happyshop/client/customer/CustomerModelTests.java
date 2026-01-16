@@ -10,6 +10,12 @@ import ci553.happyshop.storageAccess.DatabaseRW;
 import ci553.happyshop.storageAccess.DatabaseRWFactory;
 
 public class CustomerModelTests {
+    /** 
+     * @throws SQLException
+     * @throws NoSuchFieldException
+     * @throws IllegalArgumentException
+     * @throws IllegalAccessException
+     */
     @Test //Test 2
     void SearchByNameTest() throws SQLException, NoSuchFieldException, IllegalArgumentException, IllegalAccessException{
         CustomerView cusView = new CustomerView();

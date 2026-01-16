@@ -79,6 +79,9 @@ public class RemoveProductNotifier {
         scene = new Scene(pane, WIDTH, HEIGHT);
     }
 
+    /** 
+     * @return String
+     */
     private String cutomerActionBuilder(){
         StringBuilder actions = new StringBuilder(" \u26A1 You can now: \n");
         actions.append("\u2022 Checkout your trolley as it is \n");
@@ -108,6 +111,9 @@ public class RemoveProductNotifier {
         window.show();
     }
 
+    /** 
+     * @param removalMsg
+     */
     // Show remove product message
     public void showRemovalMsg(String removalMsg) {
         if (window ==null ||!window.isShowing() ) {

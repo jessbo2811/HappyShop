@@ -35,6 +35,10 @@ public class Product implements Comparable<Product> {
         this.stockQuantity = stockQuantity;
     }
 
+    /** 
+     * @param orderedQuantity
+     * @return String
+     */
     // a set of getter methods
     public String getProductId() { return proId;}
     public String getProductDescription() { return proDescription;}
@@ -43,17 +47,27 @@ public class Product implements Comparable<Product> {
     public int getOrderedQuantity() { return orderedQuantity;}
     public int getStockQuantity() { return stockQuantity;}
 
+    /** 
+     * @param orderedQuantity
+     */
     //a setter method
     public void setOrderedQuantity(int orderedQuantity) {
         this.orderedQuantity = orderedQuantity;
     }
 
+    /** 
+     * @param otherProduct
+     * @return int
+     */
     @Override
     public int compareTo(Product otherProduct) {
         // Compare by product ID or any other attribute you want to sort by
         return this.proId.compareTo(otherProduct.proId); // Sort by proId alphabetically (ascending);
     }
 
+    /** 
+     * @return String
+     */
     @Override
     // Creates a formatted string containing ID, price (with 2 decimal places), stock amount, and description
     // Used in the Warehouse search page to display searched product information

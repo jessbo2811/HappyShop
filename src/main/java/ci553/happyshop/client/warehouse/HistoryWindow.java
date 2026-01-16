@@ -56,6 +56,9 @@ public class HistoryWindow {
         window.setY(bounds.y); // align vertically
     }
 
+    /** 
+     * @param history
+     */
     public  void showManageHistory(ArrayList<String> history){
         if(window ==null ||!window.isShowing() ) {
             createWindow();  // Only create window if it's not created or unvisible

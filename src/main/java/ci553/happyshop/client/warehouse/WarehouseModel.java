@@ -60,6 +60,9 @@ public class WarehouseModel {
         ShowInputErrorMsg
     }
 
+    /** 
+     * @throws SQLException
+     */
     void doSearch() throws SQLException {
         String keyword = view.tfSearchKeyword.getText().trim();
         if (!keyword.equals("")) {
@@ -72,6 +75,10 @@ public class WarehouseModel {
         updateView(UpdateForAction.BtnSearch);
     }
 
+    /** 
+     * @throws SQLException
+     * @throws IOException
+     */
     void doDelete() throws SQLException, IOException {
         System.out.println("delete gets called in model");
         Product pro  = view.obrLvProducts.getSelectionModel().getSelectedItem();
@@ -127,6 +134,10 @@ public class WarehouseModel {
            theNewProId = null;
        }
     }
+    /** 
+     * @throws SQLException
+     * @throws IOException
+     */
     void doSummit() throws SQLException, IOException {
         if(view.theProFormMode.equals("EDIT")){
             doSubmitEdit();
@@ -136,6 +147,10 @@ public class WarehouseModel {
         }
     }
 
+    /** 
+     * @throws IOException
+     * @throws SQLException
+     */
     private void doSubmitEdit() throws IOException, SQLException {
         System.out.println("ok edit is called");
         if(theSelectedPro!=null) {
@@ -173,6 +188,10 @@ public class WarehouseModel {
         }
     }
 
+    /** 
+     * @param addOrSub
+     * @throws SQLException
+     */
     void doChangeStockBy(String addOrSub) throws SQLException {
         int oldStock = Integer.parseInt(view.tfStockEdit.getText().trim());
         int newStock =oldStock;
@@ -196,6 +215,11 @@ public class WarehouseModel {
         }
     }
 
+    /** 
+     * @param txChangeBy
+     * @return boolean
+     * @throws SQLException
+     */
     private  boolean validateInputChangeStockBy(String txChangeBy) throws SQLException {
         StringBuilder errorMessage = new StringBuilder();
         // Validate Stock changBy Quantity (must be an integer)
@@ -212,6 +236,10 @@ public class WarehouseModel {
         return true;
     }
 
+    /** 
+     * @throws SQLException
+     * @throws IOException
+     */
     private void doSubmitNew() throws SQLException, IOException {
         System.out.println("Adding new Pro in model");
 
@@ -240,6 +268,13 @@ public class WarehouseModel {
         }
     }
 
+    /** 
+     * @param txPrice
+     * @param txStock
+     * @param description
+     * @return boolean
+     * @throws SQLException
+     */
     private  boolean validateInputEditChild(String txPrice, String txStock,
                                          String description) throws SQLException {
 
@@ -289,6 +324,15 @@ public class WarehouseModel {
         return true;
     }
 
+    /** 
+     * @param id
+     * @param txPrice
+     * @param txStock
+     * @param description
+     * @param imageUri
+     * @return boolean
+     * @throws SQLException
+     */
     private  boolean validateInputNewProChild(String id, String txPrice, String txStock,
                                    String description, String imageUri) throws SQLException {
 
@@ -346,6 +390,9 @@ public class WarehouseModel {
     }
 
 
+    /** 
+     * @param updateFor
+     */
     private void updateView(UpdateForAction updateFor){
         switch (updateFor) {
             case UpdateForAction.BtnSearch:
@@ -393,6 +440,9 @@ public class WarehouseModel {
         }
     }
 
+    /** 
+     * @param type
+     */
     private void showManageStockHistory(ManageProductType type){
         String dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
         String record="";

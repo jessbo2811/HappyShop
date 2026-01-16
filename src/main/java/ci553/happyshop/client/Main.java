@@ -38,10 +38,17 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args); // Launches the JavaFX application and calls the @Override start()
     }
 
+    /** 
+     * @param window
+     * @throws IOException
+     */
     //starts the system
     @Override
     public void start(Stage window) throws IOException {

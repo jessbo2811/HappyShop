@@ -10,6 +10,9 @@ import javafx.stage.Stage;
 
 public class PickerClient extends Application {
 
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }

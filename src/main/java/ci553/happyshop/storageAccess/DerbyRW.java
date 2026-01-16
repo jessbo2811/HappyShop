@@ -22,6 +22,11 @@ public class DerbyRW implements DatabaseRW {
     private static String dbURL = DatabaseRWFactory.dbURL; // Shared by all instances
     private  Lock lock = new ReentrantLock(); // Each instance has its own lock
 
+    /** 
+     * @param keyword
+     * @return ArrayList<Product>
+     * @throws SQLException
+     */
     //search product by product Id or name, return a list of products or null
     //search by Id at first, if get null, search by product name
     //currently used by warehouseModel.
@@ -44,6 +49,11 @@ public class DerbyRW implements DatabaseRW {
         return productList;
     }
 
+    /** 
+     * @param proId
+     * @return Product
+     * @throws SQLException
+     */
     //search  by product Id, return a product or null
     public Product searchByProductId(String proId) throws SQLException {
         Product product = null;
@@ -69,6 +79,10 @@ public class DerbyRW implements DatabaseRW {
         return product;
     }
 
+    /** 
+     * @param name
+     * @return ArrayList<Product>
+     */
     //helper method
     //search  by product name, return a List of products or null
     private ArrayList<Product> searchByProName(String name) {
@@ -97,6 +111,11 @@ public class DerbyRW implements DatabaseRW {
         return productList; // could be empty if no matches
     }
 
+    /** 
+     * @param rs
+     * @return Product
+     * @throws SQLException
+     */
     //make a Product object from the database record
     private Product makeProObjFromDbRecord(ResultSet rs) throws SQLException {
         Product product = null;
@@ -128,6 +147,11 @@ public class DerbyRW implements DatabaseRW {
         return product;
     }
 
+    /** 
+     * @param proList
+     * @return ArrayList<Product>
+     * @throws SQLException
+     */
     public ArrayList<Product> purchaseStocks(ArrayList<Product> proList) throws SQLException {
         lock.lock();  // Lock the critical section to prevent concurrent access
         ArrayList<Product> insufficientProducts = new ArrayList<>();
@@ -198,6 +222,14 @@ public class DerbyRW implements DatabaseRW {
     }
 
 
+    /** 
+     * @param id
+     * @param des
+     * @param price
+     * @param iName
+     * @param stock
+     * @throws SQLException
+     */
     //warehouse edits an existing product
     public void updateProduct(String id, String des, double price, String iName, int stock) throws SQLException {
         lock.lock();
@@ -254,6 +286,10 @@ public class DerbyRW implements DatabaseRW {
         }
     }
 
+/** 
+ * @param proId
+ * @throws SQLException
+ */
 //warehouse delete an existing product
     public void deleteProduct(String proId) throws SQLException {
         lock.lock();
@@ -291,6 +327,11 @@ public class DerbyRW implements DatabaseRW {
         }
     }
 
+    /** 
+     * @param proId
+     * @return boolean
+     * @throws SQLException
+     */
     //check if product ID is unique
     //warehouse tries to add a new prodcut, id must be unique
     public boolean isProIdAvailable(String proId) throws SQLException {
@@ -312,6 +353,14 @@ public class DerbyRW implements DatabaseRW {
         }
     }
 
+    /** 
+     * @param id
+     * @param des
+     * @param price
+     * @param image
+     * @param stock
+     * @throws SQLException
+     */
     //   /images/0001TV.jpg
     //warehouse adds a new product to database
     public void insertNewProduct(String id, String des,double price,String image,int stock) throws SQLException {

@@ -74,6 +74,10 @@ public class PickerModel {
         }
     }
 
+    /** 
+     * @param orderId
+     * @return boolean
+     */
     // Lock an order
     private boolean lockOrder(int orderId) {
         if (lockedOrderIds.contains(orderId)) {
@@ -84,16 +88,26 @@ public class PickerModel {
         }
     }
 
+    /** 
+     * @param orderId
+     */
     // Unlock an order
     private void unlockOrder(int orderId) {
         lockedOrderIds.remove(orderId);
     }
 
+    /** 
+     * @param orderId
+     * @return boolean
+     */
     // Check if an order is locked
     private boolean isOrderLocked(int orderId) {
         return lockedOrderIds.contains(orderId);
     }
 
+    /** 
+     * @throws IOException
+     */
     public void doCollected() throws IOException {
         if(theOrderId!=0 && isOrderLocked(theOrderId)){
             theOrderState = OrderState.Collected;
@@ -112,6 +126,9 @@ public class PickerModel {
         orderHub.registerPickerModel(this);
     }
 
+    /** 
+     * @throws IOException
+     */
     //Notifies the OrderHub of a change in the order state.
     //If the order is moving to the 'Progressing' state, asks OrderHub to read the order detail
     // from the file system for displaying in the pickerView.
@@ -123,6 +140,9 @@ public class PickerModel {
         }
     }
 
+    /** 
+     * @param om
+     */
     // Sets the order map with new data and refreshes the display.
     // This method is called by OrderHub to set orderMap for picker.
     public void setOrderMap(TreeMap<Integer,OrderState> om) {
@@ -132,6 +152,9 @@ public class PickerModel {
         updatePickerView();
     }
 
+    /** 
+     * @return String
+     */
     //Builds a formatted string representing the current order map.
     //Each line contains the order ID followed by its state, aligned with spacing.
     private String buildOrderMapString() {

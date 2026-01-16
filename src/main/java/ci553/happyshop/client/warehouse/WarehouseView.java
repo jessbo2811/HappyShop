@@ -136,6 +136,9 @@ public class WarehouseView  {
     TextArea taDescriptionNewPro;
     private ImageView ivProNewPro;
     String imageUriNewPro; //user slected image Uri
+    /** 
+     * @param window
+     */
     // URI of the image selected by the user for a new product. This value is retrieved from the image chooser.
 
     public void start(Stage window) {
@@ -163,6 +166,9 @@ public class WarehouseView  {
         viewWindow = window; // Sets the global viewWindow reference to this window for future reference and management.
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox createSearchPage() {
         Label laTitle = new Label("Search by product ID/Name");
         laTitle.setStyle(UIStyle.labelTitleStyle);
@@ -261,6 +267,9 @@ public class WarehouseView  {
          */
     }
 
+    /** 
+     * @return VBox
+     */
     private VBox createProductFormPage() {
         cbProductFormMode = new ComboBox<>();
         cbProductFormMode.setStyle(UIStyle.comboBoxStyle);
@@ -294,6 +303,9 @@ public class WarehouseView  {
     }
 
 
+    /** 
+     * @return VBox
+     */
     private VBox createEditProdcutChild() {
         //HBox for Id Label and TextField
         Label laId = new Label("ID:");
@@ -397,6 +409,9 @@ public class WarehouseView  {
     }
 
 
+    /** 
+     * @return VBox
+     */
     private VBox createNewProductChild() {
         //HBox for Id Label and TextField
         Label laId = new Label("ID:");
@@ -469,6 +484,9 @@ public class WarehouseView  {
         return vbAddNewProductToStockChild;
     }
 
+    /** 
+     * @param disable
+     */
     //disable editable controls before user select a product and click the button edit
     private void disableEditProductChild(boolean disable) {
         tfPriceEdit.setDisable(disable);
@@ -482,6 +500,9 @@ public class WarehouseView  {
     }
 
 
+    /** 
+     * @param event
+     */
     private void buttonClick(ActionEvent event)  {
         Button btn= (Button)event.getSource();
         String action = btn.getText();
@@ -501,6 +522,9 @@ public class WarehouseView  {
 
     }
 
+    /** 
+     * @param event
+     */
     private void imageChooser(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Images", "*.png", "*.jpg", "*.jpeg"));
@@ -528,6 +552,9 @@ public class WarehouseView  {
         }
     }
 
+    /** 
+     * @param productList
+     */
     //update the product listVew of serachPage
     void updateObservableProductList( ArrayList<Product> productList) {
         int proCounter = productList.size();
@@ -538,11 +565,21 @@ public class WarehouseView  {
         obeProductList.addAll(productList);
     }
 
+    /** 
+     * @param stock
+     */
     void updateBtnAddSub(String stock){
         tfStockEdit.setText(stock);
         tfChangeByEdit.clear();
     }
 
+    /** 
+     * @param id
+     * @param price
+     * @param stock
+     * @param des
+     * @param imageUrl
+     */
     //update interface of editing existing product in stock
     void updateEditProductChild(String id, String price, String stock, String des, String imageUrl) {
         tfIdEdit.setText(id);
@@ -579,6 +616,9 @@ public class WarehouseView  {
        System.out.println("resetNewProChild in view called");
     }
 
+    /** 
+     * @return WindowBounds
+     */
     WindowBounds getWindowBounds() {
         return new WindowBounds(viewWindow.getX(),
                                 viewWindow.getY(),

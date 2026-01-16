@@ -38,12 +38,20 @@ public class SetOrderFileSystem {
             StorageLocation.collectedPath
     };
 
+    /** 
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         deleteFilesInFolder(foldersPaths[0]);
         createFolders(foldersPaths);
         createOrderCounterFile(orderCounterPath);
     }
 
+    /** 
+     * @param folder
+     * @throws IOException
+     */
     // Recursively deletes all files in folder
     public static void deleteFilesInFolder(Path folder) throws IOException {
         if (Files.exists(folder)) {
@@ -66,6 +74,10 @@ public class SetOrderFileSystem {
         }
     }
 
+    /** 
+     * @param paths
+     * @throws IOException
+     */
     // Create all necessary folders for storing orderCounter file, order files and images if they do not exist
     private static void createFolders(Path[] paths) throws IOException {
         for (Path path : paths) {
@@ -76,6 +88,10 @@ public class SetOrderFileSystem {
         }
     }
 
+    /** 
+     * @param path
+     * @throws IOException
+     */
     //create the single orderCounter file and write "0" if it doesn't exist
     private static void createOrderCounterFile(Path path) throws IOException {
         // Create the file and write "0" if it doesn't exist

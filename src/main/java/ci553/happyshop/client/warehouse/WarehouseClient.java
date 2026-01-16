@@ -12,6 +12,9 @@ import javafx.stage.Stage;
 
 public class WarehouseClient extends Application {
 
+    /** 
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
