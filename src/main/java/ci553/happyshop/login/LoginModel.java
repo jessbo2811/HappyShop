@@ -5,7 +5,9 @@ import java.util.Map;
 import ci553.happyshop.client.Main;
 
 import java.util.HashMap;
-//The model of the login feature - manages the logic of logging in, tracks logins, and tracks if the user has logged in yet
+/**
+*The model of the login feature - manages the logic of logging in, tracks logins, and tracks if the user has logged in yet
+*/
 public class LoginModel {
     public LoginView loginView;
 

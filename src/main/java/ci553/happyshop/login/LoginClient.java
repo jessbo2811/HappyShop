@@ -3,7 +3,9 @@ package ci553.happyshop.login;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-//Creates and links a standalone login client - cna be used for testing
+/**
+* Creates and links a standalone login client - can be used for testing
+*/
 public class LoginClient extends Application{
     /** 
      * @param args

@@ -1,6 +1,8 @@
 package ci553.happyshop.login;
 
-//The controller component for the login feature - allows the view to execute functionality within the model
+/**
+ * The controller component for the login feature - allows the view to execute functionality within the model
+*/
 public class LoginController {
     public LoginModel loginModel;
 

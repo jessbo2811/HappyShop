@@ -10,7 +10,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-//The view component of the Login system, constructs the window to enable the user to type in their credentials and swap between a staff or customer login
+/**
+*The view component of the Login system, constructs the window to enable the user to type in their credentials and swap between a staff or customer login
+*/
 public class LoginView {
     public LoginController loginController;
 
