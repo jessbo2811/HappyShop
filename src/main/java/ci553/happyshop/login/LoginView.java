@@ -24,7 +24,7 @@ public class LoginView {
     TextField tfPassword;
     private Button toggleLogin;
     private Label laPageTitle;
-
+    private Label laFailLoginMessage;
     private Stage viewWindow;
 
     /** 
@@ -76,7 +76,11 @@ public class LoginView {
         loginButton.setStyle(UIStyle.blueBtnStyle);
         loginButton.setOnAction(e -> loginController.doAction("LoginPressed"));
 
-        VBox loginPage = new VBox(15, laPageTitle, toggleLogin, userSection, passSection, loginButton);
+        Label loginFail = new Label("");
+        laFailLoginMessage = loginFail;
+        loginFail.setStyle(UIStyle.labelStyle);
+
+        VBox loginPage = new VBox(15, laPageTitle, toggleLogin, userSection, passSection, loginButton, loginFail);
         loginPage.setAlignment(Pos.TOP_CENTER);
         loginPage.setStyle("-fx-padding: 15px");
         return loginPage;
@@ -87,9 +91,15 @@ public class LoginView {
      * @param loginType Wether the loginView should show as a staff or customer login
      * @param loggedIn If the login has been completed - if so the window should hide
      */
-    void update(LoginType loginType, boolean loggedIn){
+    void update(LoginType loginType, boolean loggedIn, boolean showErrorMessage){
         if (loggedIn){
             viewWindow.hide();
+        }
+        if (showErrorMessage){
+            laFailLoginMessage.setText("Login details not recognised, please try again!");
+        }
+        else{
+            laFailLoginMessage.setText("");
         }
         switch (loginType){
             case LoginType.Customer:

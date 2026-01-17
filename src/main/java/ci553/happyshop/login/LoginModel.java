@@ -14,6 +14,7 @@ public class LoginModel {
     public LoginType loginType = LoginType.Customer;
 
     private boolean loggedIn = false;
+    private boolean failedLogin = false;
 
     Map<String, String> staffLogins;
     Map<String, String> customerLogins;
@@ -59,6 +60,10 @@ public class LoginModel {
             }
             updateView();
         }
+        else{
+            failedLogin = true;
+            updateView();
+        }
     }
     /** 
      * @param username the username for the attempted login
@@ -89,6 +94,6 @@ public class LoginModel {
      * Updates the connected view with the selected type, and wether or not the log in has been completed
      */
     void updateView(){
-        loginView.update(loginType, loggedIn);
+        loginView.update(loginType, loggedIn, failedLogin);
     }
 }
